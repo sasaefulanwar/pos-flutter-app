@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1065486424666",
+    "project_id": "pos-flutter-a38c7",
+    "storage_bucket": "pos-flutter-a38c7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065486424666:android:121185bcffe4d6fe8c5663",
+        "android_client_info": {
+          "package_name": "com.example.tugas_besar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1065486424666-b6rj9pjge6qql1sc25re65f36vg3c6br.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tugas_besar",
+            "certificate_hash": "4ac715bb794b32bec8139bb5415847fd5b9e509b"
+          }
+        },
+        {
+          "client_id": "1065486424666-m4h2dpsadb8gs3e8saonr64c2l7k6idb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQpHFQ1ZoVCNvLO-XcAWgPU9b2QWry9ss"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1065486424666-m4h2dpsadb8gs3e8saonr64c2l7k6idb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1065486424666-7abon1b51mlt0jbk9e498dj0rld69gqd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tugasBesar"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
