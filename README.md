@@ -1,4 +1,4 @@
-# tugas_besar
+# point-of-sale-flutter-app
 
 A new Flutter project.
 
