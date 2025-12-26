@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class ProductProvider extends ChangeNotifier {
-  final String baseUrl = "http://192.168.1.131/api_pos";
+  final String baseUrl = "http://192.168.1.6/api_pos";
 
   List<Map<String, dynamic>> _products = [];
   bool _loading = false;
