@@ -1,3 +1,4 @@
+// lib/services/notification_service.dart
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class NotificationService {
@@ -12,6 +13,12 @@ class NotificationService {
     const android = AndroidInitializationSettings('@mipmap/ic_launcher');
     const settings = InitializationSettings(android: android);
     await _plugin.initialize(settings);
+
+    await _plugin
+        .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin
+        >()
+        ?.requestNotificationsPermission();
   }
 
   Future<void> show(String title, String body) async {
@@ -20,6 +27,7 @@ class NotificationService {
       'POS Notification',
       importance: Importance.high,
       priority: Priority.high,
+      ticker: 'ticker',
     );
 
     await _plugin.show(

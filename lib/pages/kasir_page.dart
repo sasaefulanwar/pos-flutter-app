@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../providers/product_provider.dart';
 import '../providers/cart_provider.dart';
 import '../providers/transaction_provider.dart';
+import '../services/socket_service.dart';
 
 class KasirPage extends StatefulWidget {
   const KasirPage({super.key});
@@ -13,6 +14,12 @@ class KasirPage extends StatefulWidget {
 }
 
 class _KasirPageState extends State<KasirPage> {
+  @override
+  void initState() {
+    super.initState();
+    SocketService().connect("http://192.168.1.6:3000");
+  }
+
   @override
   Widget build(BuildContext context) {
     // Palet Warna Tema (Konsisten)
@@ -138,7 +145,6 @@ class _KasirPageState extends State<KasirPage> {
                               child: InkWell(
                                 onTap: () {
                                   cartProv.tambahItem(item);
-                                  // Feedback Getar/Snack kecil opsional
                                 },
                                 borderRadius: BorderRadius.circular(30),
                                 child: Container(
@@ -236,13 +242,19 @@ class _KasirPageState extends State<KasirPage> {
                                   cartProv.totalHarga,
                                 );
 
+                                SocketService().sendTransaction({
+                                  'total': cartProv.totalHarga,
+                                  'items_count': cartProv.totalItem,
+                                  'timestamp': DateTime.now().toIso8601String(),
+                                });
+
                                 cartProv.clearCart();
 
                                 if (!mounted) return;
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: const Text(
-                                      "Transaksi berhasil disimpan",
+                                      "Transaksi berhasil disimpan & disiarkan",
                                     ),
                                     backgroundColor: accentColor,
                                     behavior: SnackBarBehavior.floating,

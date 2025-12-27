@@ -41,9 +41,14 @@ class _LoginPageState extends State<LoginPage> {
   // ================= LOGIN GOOGLE =================
   Future<void> loginGoogle() async {
     try {
+      // Tambahkan baris di bawah ini:
+      // Ini akan "membersihkan" sesi Google Sign-In yang tersangkut di aplikasi
+      // sehingga sistem akan selalu memunculkan jendela "Choose an Account" (Pemilih Akun).
+      await _googleSignIn.signOut();
+
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
 
-      if (googleUser == null) return;
+      if (googleUser == null) return; // User membatalkan pemilihan akun
 
       final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
@@ -54,6 +59,7 @@ class _LoginPageState extends State<LoginPage> {
       );
 
       await FirebaseAuth.instance.signInWithCredential(credential);
+      // Firebase authStateChanges di main.dart akan otomatis mengarahkan ke HomePage [cite: 3]
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(

@@ -17,8 +17,10 @@ class SocketService {
           .build(),
     );
 
+    socket!.connect();
+
     socket!.onConnect((_) {
-      print('✅ Socket connected');
+      print('✅ Socket connected to $serverUrl');
     });
 
     socket!.on('pos:notify', (data) {
@@ -28,6 +30,8 @@ class SocketService {
         'Total: Rp ${data['total']}',
       );
     });
+
+    socket!.onDisconnect((_) => print('❌ Socket disconnected'));
   }
 
   void sendTransaction(Map<String, dynamic> data) {

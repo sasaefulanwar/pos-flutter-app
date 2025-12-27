@@ -24,13 +24,10 @@ class ProductProvider extends ChangeNotifier {
 
       final List data = jsonDecode(response.body);
 
-      // 🔥 NORMALISASI DATA API DI SINI
       _products = data.map<Map<String, dynamic>>((item) {
         return {
           'id': item['id'],
-          // API MySQL biasanya pakai nama_produk
           'nama': item['nama_produk'] ?? item['nama'] ?? '',
-          // harga sering String → int
           'harga': int.parse(item['harga'].toString()),
         };
       }).toList();

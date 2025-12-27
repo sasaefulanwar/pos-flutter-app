@@ -10,11 +10,15 @@ import 'providers/transaction_provider.dart';
 import 'pages/login_page.dart';
 import 'pages/home_page.dart';
 import 'firebase_options.dart';
+import 'services/socket_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   await NotificationService().init();
+
+  SocketService().connect("http://192.168.1.6:3000");
 
   runApp(
     MultiProvider(
